@@ -20,8 +20,9 @@ object ClientRepl {
     val in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
 
     val terminal = TerminalFactory.create()
-    val stdIn = new ConsoleReader(System.in, new PrintWriter(System.out, true), terminal)
+    val stdIn = new ConsoleReader(System.in, System.out, terminal)
     stdIn.setPrompt("scala> ")
+    
 
     @tailrec def repl(): Unit = {
       handleReplOutput(in)
